@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Local Library Home</h1>
+
+  <p>Welcome to <em>LocalLibrary</em>, a very basic Django website developed</p>
+
+<h2>Dynamic content</h2>
+
+  <p>The autoservice has the following record counts:</p>
+  <ul>
+    <li><strong>Tasks:</strong> {{ num_tasks }}</li>
+    <li><strong>Work:</strong> {{ num_workers }}</li>
+    <li><strong>Cars:</strong> {{ num_cars }}</li>
+    <li><strong>Clients:</strong> {{ num_clients }}</li>
+  </ul>
+
+{% endblock %}

@@ -25,7 +25,7 @@ class Workers(models.Model):
     password = models.CharField(max_length=100)
 
 
-class Fixes:
+class Fixes(models.Model):
     type_active = models.CharField(max_length=60)
     id_car = models.IntegerField()
     id_worker = models.IntegerField()
@@ -34,7 +34,7 @@ class Fixes:
     comment = models.CharField(max_length=255)
 
 
-class Parts:
+class Parts(models.Model):
     type_active = models.IntegerField()
     name = models.CharField(max_length=255)
     sum = models.IntegerField()
