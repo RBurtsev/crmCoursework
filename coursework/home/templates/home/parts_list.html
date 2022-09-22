@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Parts</h1>
+
+    {% if parts_list %}
+    <ul>
+
+      {% for part in parts_list %}
+      <li>
+        <nobr>{{ part.name }}</nobr> {{part.sum}} {{part.average_cost}}
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no parts in the autoservice.</p>
+    {% endif %} 
+{% endblock %}
