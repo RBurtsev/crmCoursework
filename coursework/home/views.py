@@ -26,3 +26,10 @@ def index(request):
 class PartListView(generic.ListView):
     model = Parts
 
+class BoardListView(generic.ListView):
+    model = Parts
+
+class ClientsListView(generic.ListView):
+    model = Clients
+
+

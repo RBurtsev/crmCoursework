@@ -9,9 +9,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
   <!-- Добавление дополнительного статического CSS файла -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <script src="{% static 'js/script.js' %}"></script>
 </head>
 
 <body>
@@ -30,7 +32,8 @@
           {% endif %}
          <li><a href="{% url 'index' %}">Home</a></li>
          <li><a href="{% url 'parts' %}">All parts</a></li>
-         <li><a href="">Deck</a></li>
+         <li><a href="{% url 'board' %}">Board</a></li>
+         <li><a href="{% url 'clients' %}">Clients</a></li>
       </ul>
 
      {% endblock %}

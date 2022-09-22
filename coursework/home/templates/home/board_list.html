@@ -3,18 +3,17 @@
 {% block content %}
     <h1>Parts</h1>
 
-    <input id="searchbar" onkeyup="search_parts()" type="text" name="search" placeholder="Search parts..">
     {% if parts_list %}
-    <ol id="list">
+    <ul>
 
       {% for part in parts_list %}
-      <li class="parts">
-        {{ part.name }} {{part.sum}} {{part.average_cost}}
+      <li>
+        <nobr>{{ part.name }} {{part.sum}} {{part.average_cost}}</nobr>
       </li>
       {% endfor %}
 
-    </ol>
+    </ul>
     {% else %}
       <p>There are no parts in the autoservice.</p>
-    {% endif %}
+    {% endif %} 
 {% endblock %}

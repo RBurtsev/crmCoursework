@@ -35,7 +35,7 @@ class Fixes(models.Model):
 
 
 class Parts(models.Model):
-    type_active = models.IntegerField()
+    type_active = models.CharField(max_length=50)
     name = models.CharField(max_length=255)
     sum = models.IntegerField()
     average_cost = models.IntegerField()

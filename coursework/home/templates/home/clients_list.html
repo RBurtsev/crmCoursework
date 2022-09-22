@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Clients</h1>
+
+    {% if clients_list %}
+    <ul>
+
+      {% for client in clients_list %}
+      <li>
+        <nobr>{{ client.full_name }} {{client.mail}} {{client.phone}}</nobr>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no clients in the autoservice.</p>
+    {% endif %} 
+{% endblock %}
