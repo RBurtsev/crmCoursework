@@ -3,17 +3,21 @@
 {% block content %}
     <h1>Clients</h1>
 
-    {% if clients_list %}
-    <ul>
+    <input id="searchbar" onkeyup="search_clients()" type="text" name="search" placeholder="Search clients..">
+    <a href="{% url 'client_create' %}">Создать</a>
+{% if clients_list %}
+    <ol id="list">
 
       {% for client in clients_list %}
-      <li>
-        <nobr>{{ client.full_name }} {{client.mail}} {{client.phone}}</nobr>
+      <li class="clients">
+        {{ client.full_name }} {{client.mail}} {{client.phone}} {{client.numbers_cars}} {{client.brand_cars}}
+        <a href="{% url 'client_update' client.id %}">изменить</a>
+        <a href="{% url 'client_delete' client.id %}">удалить</a>
       </li>
       {% endfor %}
 
-    </ul>
+    </ol>
     {% else %}
       <p>There are no clients in the autoservice.</p>
-    {% endif %} 
+    {% endif %}
 {% endblock %}

@@ -4,12 +4,15 @@
     <h1>Parts</h1>
 
     <input id="searchbar" onkeyup="search_parts()" type="text" name="search" placeholder="Search parts..">
-    {% if parts_list %}
+    <a href="{% url 'part_create' %}">Создать</a>
+{% if parts_list %}
     <ol id="list">
 
       {% for part in parts_list %}
       <li class="parts">
-        {{ part.name }} {{part.sum}} {{part.average_cost}}
+          {{ part.name }} {{part.sum}} {{part.average_cost}}
+          <a href="{% url 'part_update' part.id %}">изменить</a>
+          <a href="{% url 'part_delete' part.id %}">удалить</a>
       </li>
       {% endfor %}
 
