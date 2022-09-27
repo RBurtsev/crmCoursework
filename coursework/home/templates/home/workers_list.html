@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Parts</h1>
+
+    <input id="searchbar" onkeyup="search_workers()" type="text" name="search" placeholder="Search workers..">
+    <a href="{% url 'worker_create' %}">Создать</a>
+    {% if workers_list %}
+    <ol id="list">
+
+      {% for worker in workers_list %}
+      <li class="workers">
+          {{ worker.full_name }} {{worker.post}}
+
+          <a href="{% url 'worker_update' worker.id %}">изменить</a>
+          <a href="{% url 'worker_delete' worker.id %}">удалить</a>
+      </li>
+      {% endfor %}
+
+    </ol>
+    {% else %}
+      <p>There are no workers in the autoservice.</p>
+    {% endif %}
+{% endblock %}

@@ -27,13 +27,15 @@
            {% if user.is_authenticated %}
          <li>User: {{ user.get_username }}</li>
          <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+         <li><a href="{% url 'index' %}">Home</a></li>
+         <li><a href="{% url 'parts' %}">All parts</a></li>
+         <li><a href="{% url 'clients' %}">Clients</a></li>
+         <li><a href="{% url 'fixes' %}">Fixes</a></li>
+         <li><a href="{% url 'workers' %}">Workers</a></li>
+         <li><a href="{% url 'managedeck' %}">Manage</a></li>
           {% else %}
           <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
           {% endif %}
-         <li><a href="{% url 'index' %}">Home</a></li>
-         <li><a href="{% url 'parts' %}">All parts</a></li>
-         <li><a href="{% url 'board' %}">Board</a></li>
-         <li><a href="{% url 'clients' %}">Clients</a></li>
       </ul>
 
      {% endblock %}

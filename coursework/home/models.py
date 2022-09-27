@@ -17,7 +17,22 @@ class Workers(models.Model):
 
 
 class Fixes(models.Model):
-    type_active = models.CharField(max_length=60)
+    BACKLOG = "BL"
+    TO_DO = "TD"
+    IN_PROGRESS = "IP"
+    DONE = "DE"
+    TYPE = [
+        ('BL', 'Backlog'),
+        ('TD', 'To_do'),
+        ('IP', 'In_progress'),
+        ('DE', 'Done')
+
+    ]
+    type_active = models.CharField(
+        max_length=2,
+        choices=TYPE,
+        default=BACKLOG
+    )
     id_car = models.IntegerField()
     id_worker = models.IntegerField()
     id_parts = models.IntegerField()
@@ -30,9 +45,3 @@ class Parts(models.Model):
     sum = models.IntegerField()
     average_cost = models.IntegerField()
 
-class Tasks(models.Model):
-    worker_id = models.IntegerField(default=1, null=True, blank=True)
-    client_id = models.IntegerField(default=1, null=True, blank=True)
-    fix_id = models.IntegerField(default=1, null=True, blank=True)
-    parts_id = models.IntegerField(default=1, null=True, blank=True)
-    type = models.CharField(max_length=30, default="Test", null=True, blank=True)

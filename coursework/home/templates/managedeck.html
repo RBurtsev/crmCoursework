@@ -1,0 +1,64 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Manage Deck</h1>
+
+  <p>Welcome to <em>Manage deck</em>, a very basic analis your autoservice</p>
+
+<h2>Dynamic content</h2>
+
+  <p>The autoservice has the following record counts:</p>
+  <ul>
+    <li><strong>Workers:</strong> {{ num_workers }}</li>
+    <li><strong>Clients:</strong> {{ num_clients }}</li>
+    <li><strong>Fixes:</strong> {{ num_fixes }}</li>
+    <li><strong>Numbers all parts:</strong> {{ numbers_all_parts }}</li>
+    <li><strong>Cost all parts:</strong> {{ cost_all_parts }}</li>
+    <li><strong>Average cost all parts:</strong> {{ average_cost_all_parts }}</li>
+  </ul>
+  <p>Top clients</p>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <strong>Name</strong>
+        </th>
+        <th>
+            <strong>Numbers fixes</strong>
+        </th>
+    </thead>
+    <tbody>
+
+        {% for top_client in top_clients %}
+        <tr>
+        {% for elem in top_client %}
+        <th>{{ elem }} </th>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+ <p>Top workers</p>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <strong>Name</strong>
+        </th>
+        <th>
+            <strong>Numbers fixes</strong>
+        </th>
+    </thead>
+    <tbody>
+
+        {% for top_worker in top_workers %}
+        <tr>
+        {% for elem in top_worker %}
+        <th>{{ elem }} </th>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
