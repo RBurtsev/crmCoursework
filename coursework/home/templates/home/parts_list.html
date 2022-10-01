@@ -2,21 +2,53 @@
 
 {% block content %}
     <h1>Parts</h1>
-
+    <p>on this page of the site you can see the database of customers of the car dealership, there is also a search for the love string of the element from the database, to create a new client, click the "create" button</p>
     <input id="searchbar" onkeyup="search_parts()" type="text" name="search" placeholder="Search parts..">
-    <a href="{% url 'part_create' %}">Создать</a>
-{% if parts_list %}
-    <ol id="list">
-
+    <a href="{% url 'part_create' %}">Create</a>
+    {% if parts_list %}
+<table id="info-parts">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Sum
+            </th>
+            <th>
+                average cost
+            </th>
+            <th>
+                Change
+            </th>
+            <th>
+                Delete
+            </th>
+        </tr>
+    </thead>
+    <tbody id="list">
       {% for part in parts_list %}
-      <li class="parts">
-          {{ part.name }} {{part.sum}} {{part.average_cost}}
-          <a href="{% url 'part_update' part.id %}">изменить</a>
-          <a href="{% url 'part_delete' part.id %}">удалить</a>
-      </li>
+      <tr class="workers">
+          <td>
+              {{ part.name }}
+          </td>
+          <td>
+              {{part.sum}}
+          </td>
+          <td>
+              {{part.average_cost}}
+          </td>
+          <td>
+              <a href="{% url 'part_update' part.id %}">Change</a>
+          </td>
+          <td>
+              <a href="{% url 'part_delete' part.id %}">Delete</a>
+          </td>
+      </tr>
       {% endfor %}
+    </tbody>
+</table>
 
-    </ol>
     {% else %}
       <p>There are no parts in the autoservice.</p>
     {% endif %}

@@ -1,0 +1,52 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Fixes</h1>
+    <p>on this page of the site you can see the database of fixes of the car dealership, there is also a search for the love string of the element from the database</p>
+    <input id="searchbar" onkeyup="search_fixes()" type="text" name="search" placeholder="Search fixes..">
+    <a href="{% url 'fix_create' %}">Создать</a>
+    {% if fixes_list %}
+<table id="info-fixes">
+    <thead>
+        <tr>
+            <th>
+                ID fix
+            </th>
+            <th>
+                Type active
+            </th>
+            <th>
+                Client
+            </th>
+            <th>
+                Worker
+            </th>
+            <th>
+                Parts
+            </th>
+            <th>
+                Repair cost
+            </th>
+            <th>
+                Comment
+            </th>
+        </tr>
+    </thead>
+    <tbody id="list">
+      {% for fix in fixes_list %}
+      <tr class="fixes">
+          {% for elem in fix %}
+          <td>
+              {{ elem }}
+          </td>
+          {% endfor %}
+
+      </tr>
+      {% endfor %}
+
+    </tbody>
+</table>
+    {% else %}
+      <p>There are no fixes in the autoservice.</p>
+    {% endif %}
+{% endblock %}

@@ -1,3 +1,5 @@
+import pickle
+
 from django.shortcuts import render
 from django.views import generic
 
@@ -34,8 +36,8 @@ def top_clients_array():
     for key, value in sorted_help_clients.items():
         top_clients.append([key, value])
     top_clients = top_clients[::-1]
-    if len(top_clients) > 5:
-        top_clients = top_clients[:5]
+    if len(top_clients) > 10:
+        top_clients = top_clients[:10]
     for e in Clients.objects.all():
         for i in range(len(top_clients)):
             if top_clients[i][0] == int(e.id):
@@ -54,8 +56,8 @@ def top_workers_array():
     for key, value in sorted_help_workers.items():
         top_workers.append([key, value])
     top_workers = top_workers[::-1]
-    if len(top_workers) > 5:
-        top_workers = top_workers[:5]
+    if len(top_workers) > 10:
+        top_workers = top_workers[:10]
     for e in Workers.objects.all():
         for i in range(len(top_workers)):
             if top_workers[i][0] == int(e.id):
@@ -99,8 +101,32 @@ class ClientsListView(generic.ListView):
     model = Clients
 
 
-class FixesListView(generic.ListView):
-    model = Fixes
+def fixesview(request):
+    fixes_list = []
+    type = {
+        'BL': 'Backlog',
+        'TD': 'To do',
+        'IP': 'In progress',
+        'DE': 'Done'
+    }
+    clients = {}
+    workers = {}
+    parts = {}
+    for e in Clients.objects.all():
+        clients[e.id] = e.full_name
+    for e in Workers.objects.all():
+        workers[e.id] = e.full_name
+    for e in Parts.objects.all():
+        parts[e.id] = e.name
+    for e in Fixes.objects.all():
+        fixes_list.append([e.id, type[e.type_active], clients[e.id_car], workers[e.id_worker], parts[e.id_parts], e.repair_cost, e.comment])
+
+    return render(
+        request,
+        'fixes_list.html',
+        context={'fixes_list': fixes_list},
+    )
+
 
 
 class WorkersListView(generic.ListView):

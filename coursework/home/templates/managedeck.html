@@ -16,7 +16,21 @@
     <li><strong>Cost all parts:</strong> {{ cost_all_parts }}</li>
     <li><strong>Average cost all parts:</strong> {{ average_cost_all_parts }}</li>
   </ul>
-  <p>Top clients</p>
+<h2>Calculator remont price</h2>
+    <div id="remont_price">
+        <p>parts price</p>
+        <input id="parts"/>
+        <p>Employee hourly rate</p>
+        <input id="hourly_rate"/>
+        <p>hours</p>
+        <input id="hours"/>
+        <p>difficult: (easy, normal, hard)</p>
+        <input id="difficult"/>
+        <p><button onclick="price_func()">Get Result</button></p>
+        <p>Result:</p>
+        <p id="result"></p>
+    </div>
+  <h2>Top clients</h2>
   <table>
     <thead>
       <tr>
@@ -38,7 +52,7 @@
     {% endfor %}
     </tbody>
   </table>
- <p>Top workers</p>
+ <h2>Top workers</h2>
   <table>
     <thead>
       <tr>

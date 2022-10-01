@@ -2,22 +2,70 @@
 
 {% block content %}
     <h1>Clients</h1>
-
+    <p>on this page of the site you can see the database of clients of the car dealership, there is also a search for the love string of the element from the database, to create a new client, click the "create" button</p>
     <input id="searchbar" onkeyup="search_clients()" type="text" name="search" placeholder="Search clients..">
-    <a href="{% url 'client_create' %}">Создать</a>
-{% if clients_list %}
-    <ol id="list">
-
+    <a href="{% url 'client_create' %}">Create</a>
+    {% if clients_list %}
+<table id="info-clients">
+    <thead>
+        <tr>
+            <th>
+                Full Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Number car
+            </th>
+            <th>
+                Brand car
+            </th>
+            <th>
+                Id client
+            </th>
+            <th>
+                Change
+            </th>
+            <th>
+                Delete
+            </th>
+        </tr>
+    </thead>
+    <tbody id="list">
       {% for client in clients_list %}
-      <li class="clients">
-        {{ client.full_name }} {{client.mail}} {{client.phone}} {{client.numbers_cars}} {{client.brand_cars}}
-        <a href="{% url 'client_update' client.id %}">изменить</a>
-        <a href="{% url 'client_delete' client.id %}">удалить</a>
-      </li>
+      <tr class="clients">
+          <td>
+              {{ client.full_name }}
+          </td>
+          <td>
+              {{client.mail}}
+          </td>
+          <td>
+              {{client.phone}}
+          </td>
+          <td>
+              {{client.numbers_cars}}
+          </td>
+          <td>
+              {{client.brand_cars}}
+          </td>
+          <td>
+              {{client.id}}
+          </td>
+          <td>
+              <a href="{% url 'client_update' client.id %}">Change</a>
+          </td>
+          <td>
+              <a href="{% url 'client_delete' client.id %}">Delete</a>
+          </td>
+      </tr>
       {% endfor %}
-
-    </ol>
-
+    </tbody>
+</table>
     {% else %}
       <p>There are no clients in the autoservice.</p>
     {% endif %}

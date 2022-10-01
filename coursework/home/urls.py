@@ -5,7 +5,7 @@ urlpatterns = [
     re_path(r'^$', views.index, name='index'),
     re_path(r'^parts/$', views.PartListView.as_view(), name='parts'),
     re_path(r'^clients/$', views.ClientsListView.as_view(), name='clients'),
-    re_path(r'^fixes/$', views.FixesListView.as_view(), name='fixes'),
+    re_path(r'^fixes/$', views.fixesview, name='fixes_list'),
     re_path(r'^workers/$', views.WorkersListView.as_view(), name='workers'),
     re_path(r'^managedeck/$', views.managedeck, name='managedeck')
 ]
