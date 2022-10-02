@@ -247,23 +247,4 @@ button:active {
     padding: 10px 0px 0;
 }
 
-.row ul{
-  margin: 0;
-  list-style: none;
-  padding-left: 0px;
-  display: none;
-}
 
-.row .logo::before {
-  content: '';
-  font-size: 80%;
-  color: green;
-}
-
-.row.open .logo::before {
-  content: '';
-}
-
-.row.open ul {
-  display: block;
-}

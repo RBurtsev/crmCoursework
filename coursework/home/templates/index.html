@@ -14,4 +14,22 @@
     <li><strong>Fixes:</strong> {{ num_fixes }}</li>
   </ul>
 
+  <h2>What can this app do</h2>
+  <p>store your data and the data of your customers in a convenient form</p>
+  {% load static %}
+  <img src="{% static 'media/img.png' %}" >
+  <p>Or for example you can use the price calculator</p>
+  <div id="remont_price">
+        <p>parts price</p>
+        <input id="parts"/>
+        <p>Employee hourly rate</p>
+        <input id="hourly_rate"/>
+        <p>hours</p>
+        <input id="hours"/>
+        <p>difficult: (easy, normal, hard)</p>
+        <input id="difficult"/>
+        <p><button onclick="price_func()">Get Result</button></p>
+        <p>Result:</p>
+        <p id="result"></p>
+    </div>
 {% endblock %}
